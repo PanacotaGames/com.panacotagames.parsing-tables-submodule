@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "displayName": "Parsing Tables Submodule",
     "description": "A module for using information from Google tables that have been parsed using the I2LocalizationManual library",
-    "unity": "6000.0.15f1",
+    "unity": "6000.0",
     "author": 
     {
       "name": "PANACOTA games",
