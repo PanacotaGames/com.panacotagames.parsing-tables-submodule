@@ -1,0 +1,16 @@
+{
+    "name": "I2.Extentions",
+    "rootNamespace": "",
+    "references": [
+        "GUID:966412631bf29c24a96bb5de4e48c6cd"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
