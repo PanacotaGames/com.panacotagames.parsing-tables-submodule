@@ -1,27 +1,28 @@
-using UnityEngine;
 using I2.Loc;
-using System;
-using System.ComponentModel;
 using System.Globalization;
+using System;
 
-public static class TableValue
+namespace Core.LockedObjects
 {
-    public static T GetValue<T>(this LanguageSourceAsset table, string row, string column)
+    public static class TableValue
     {
-
-        for (var i = 0; i < table.mSource.mTerms.Count; i++)
+        public static T GetValue<T>(this LanguageSourceAsset table, string row, string column)
         {
-            if (table.mSource.mLanguages[i].Name == column)
+            row = "Sheet1/" + row;
+            for (var i = 0; i < table.mSource.mTerms.Count; i++)
             {
-                for (var j = 0; j < table.mSource.mTerms.Count; j++)
+                if (table.mSource.mTerms[i].Term == row)
                 {
-                    if (table.mSource.mTerms[j].Term == row)
+                    for (var j = 0; j < table.mSource.mLanguages.Count; j++)
                     {
-                        return (T)Convert.ChangeType(table.mSource.mTerms[j].Languages[i], typeof(T), CultureInfo.InvariantCulture);
+                        if (table.mSource.mLanguages[j].Name == column)
+                        {
+                            return (T)Convert.ChangeType(table.mSource.mTerms[i].Languages[j], typeof(T), CultureInfo.InvariantCulture);
+                        }
                     }
                 }
             }
+            throw new Exception("there is no suitable option");
         }
-        throw new Exception("there is no suitable option");
-    } 
+    }
 }
