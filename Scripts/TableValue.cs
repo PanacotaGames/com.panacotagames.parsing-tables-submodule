@@ -2,7 +2,7 @@ using I2.Loc;
 using System.Globalization;
 using System;
 
-namespace Core.LockedObjects
+namespace I2.Loc
 {
     public static class TableValue
     {
