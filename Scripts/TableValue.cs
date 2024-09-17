@@ -23,6 +23,22 @@ namespace I2.Loc
                         {
                             try 
                             {
+                                if (typeof(T) == typeof(int) || typeof(T) == typeof(long) || typeof(T) == typeof(short)) 
+                                {
+                                    float result = (float)Convert.ChangeType(table.mSource.mTerms[i].Languages[j], typeof(float), info);
+                                    if (typeof(T) == typeof(int)) 
+                                    {
+                                        return (T)(object)(int)result;
+                                    }
+                                    if (typeof(T) == typeof(long))
+                                    {
+                                        return (T)(object)(long)result;
+                                    }
+                                    if (typeof(T) == typeof(short))
+                                    {
+                                        return (T)(object)(short)result;
+                                    }
+                                }
                                 return (T)Convert.ChangeType(table.mSource.mTerms[i].Languages[j], typeof(T), info);
                             }
                             catch (Exception e) 
