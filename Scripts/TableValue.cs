@@ -1,6 +1,7 @@
 using I2.Loc;
 using System.Globalization;
 using System;
+using UnityEngine;
 
 namespace I2.Loc
 {
@@ -8,6 +9,9 @@ namespace I2.Loc
     {
         public static T GetValue<T>(this LanguageSourceAsset table, string row, string column)
         {
+            CultureInfo info = (CultureInfo)CultureInfo.InvariantCulture.Clone();
+            info.NumberFormat.NumberDecimalSeparator = ".";
+
             row = "Sheet1/" + row;
             for (var i = 0; i < table.mSource.mTerms.Count; i++)
             {
@@ -17,7 +21,14 @@ namespace I2.Loc
                     {
                         if (table.mSource.mLanguages[j].Name == column)
                         {
-                            return (T)Convert.ChangeType(table.mSource.mTerms[i].Languages[j], typeof(T), CultureInfo.InvariantCulture);
+                            try 
+                            {
+                                return (T)Convert.ChangeType(table.mSource.mTerms[i].Languages[j], typeof(T), info);
+                            }
+                            catch (Exception e) 
+                            {
+                                Debug.LogError($"Can't convert {table.mSource.mTerms[i].Languages[j]} to {typeof(T)}");
+                            }
                         }
                     }
                 }
