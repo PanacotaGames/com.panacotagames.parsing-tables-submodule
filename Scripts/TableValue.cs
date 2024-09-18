@@ -49,7 +49,7 @@ namespace I2.Loc
                     }
                 }
             }
-            throw new Exception("there is no suitable option");
+            throw new Exception($"Value not found: row:{row} column:{column}");
         }
     }
 }
