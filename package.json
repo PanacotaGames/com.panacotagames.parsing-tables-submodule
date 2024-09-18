@@ -1,6 +1,6 @@
 {
     "name": "com.panacotagames.parsing-tables-submodule",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "displayName": "Parsing Tables Submodule",
     "description": "A module for using information from Google tables that have been parsed using the I2LocalizationManual library",
     "unity": "6000.0",
