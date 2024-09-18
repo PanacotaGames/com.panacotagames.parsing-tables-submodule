@@ -12,6 +12,7 @@ namespace I2.Loc
             CultureInfo info = (CultureInfo)CultureInfo.InvariantCulture.Clone();
             info.NumberFormat.NumberDecimalSeparator = ".";
 
+            string oldRowname = row;
             row = "Sheet1/" + row;
             for (var i = 0; i < table.mSource.mTerms.Count; i++)
             {
@@ -49,7 +50,7 @@ namespace I2.Loc
                     }
                 }
             }
-            throw new Exception($"Value not found: row:{row} column:{column}");
+            throw new Exception($"Value not found: row:{oldRowname} column:{column}");
         }
     }
 }
