@@ -7,13 +7,19 @@ namespace I2.Loc
 {
     public static class TableValue
     {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        private const string SHEERT_NAME = "Development/";
+#else
+        private const string SHEERT_NAME = "Producion/";
+#endif
+
         public static T GetValue<T>(this LanguageSourceAsset table, string row, string column)
         {
             CultureInfo info = (CultureInfo)CultureInfo.InvariantCulture.Clone();
             info.NumberFormat.NumberDecimalSeparator = ".";
 
             string oldRowname = row;
-            row = "Sheet1/" + row;
+            row = SHEERT_NAME + row;
             for (var i = 0; i < table.mSource.mTerms.Count; i++)
             {
                 if (table.mSource.mTerms[i].Term == row)
