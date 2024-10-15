@@ -18,7 +18,7 @@ namespace I2.Loc
         {
             CultureInfo info = (CultureInfo)CultureInfo.InvariantCulture.Clone();
             info.NumberFormat.NumberDecimalSeparator = ".";
-
+            
             string oldRowname = row;
             row = SHEERT_NAME + row;
             for (var i = 0; i < table.mSource.mTerms.Count; i++)
@@ -62,7 +62,7 @@ namespace I2.Loc
 
         public static string[] GetRows(this LanguageSourceAsset table)
         {
-            return table.mSource.mTerms.Select(x => x.Term).ToArray();
+            return table.mSource.mTerms.Where(x => x.Term.Contains(SHEERT_NAME)).Select(x => x.Term.Replace(SHEERT_NAME, "")).ToArray();
         }
         
         public static string[] GetColumns(this LanguageSourceAsset table)
