@@ -1,5 +1,6 @@
 using I2.Loc;
 using System.Globalization;
+using System.Linq;
 using System;
 using UnityEngine;
 
@@ -57,6 +58,16 @@ namespace I2.Loc
                 }
             }
             throw new Exception($"Value not found: row:{oldRowname} column:{column}");
+        }
+
+        public static string[] GetRows(this LanguageSourceAsset table)
+        {
+            return table.mSource.mTerms.Select(x => x.Term).ToArray();
+        }
+        
+        public static string[] GetColumns(this LanguageSourceAsset table)
+        {
+            return table.mSource.mLanguages.Select(x => x.Name).ToArray();
         }
     }
 }
