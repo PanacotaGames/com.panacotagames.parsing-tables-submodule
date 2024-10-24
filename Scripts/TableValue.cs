@@ -9,18 +9,18 @@ namespace I2.Loc
     public static class TableValue
     {
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
-        private const string SHEERT_NAME = "Development/";
+        private const string SHEERT_NAME = "Development";
 #else
-        private const string SHEERT_NAME = "Producion/";
+        private const string SHEERT_NAME = "Producion";
 #endif
 
-        public static T GetValue<T>(this LanguageSourceAsset table, string row, string column)
+        public static T GetValue<T>(this LanguageSourceAsset table, string row, string column, string sheertName = SHEERT_NAME)
         {
             CultureInfo info = (CultureInfo)CultureInfo.InvariantCulture.Clone();
             info.NumberFormat.NumberDecimalSeparator = ".";
             
             string oldRowname = row;
-            row = SHEERT_NAME + row;
+            row = sheertName + "/" + row;
             for (var i = 0; i < table.mSource.mTerms.Count; i++)
             {
                 if (table.mSource.mTerms[i].Term == row)
