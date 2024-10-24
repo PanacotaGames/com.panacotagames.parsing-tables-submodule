@@ -60,9 +60,10 @@ namespace I2.Loc
             throw new Exception($"Value not found: row:{oldRowname} column:{column}");
         }
 
-        public static string[] GetRows(this LanguageSourceAsset table)
+        public static string[] GetRows(this LanguageSourceAsset table, string sheetName = SHEET_NAME)
         {
-            return table.mSource.mTerms.Where(x => x.Term.Contains(SHEERT_NAME)).Select(x => x.Term.Replace(SHEERT_NAME, "")).ToArray();
+            sheetName += "/";
+            return table.mSource.mTerms.Where(x => x.Term.Contains(sheetName)).Select(x => x.Term.Replace(sheetName, "")).ToArray();
         }
         
         public static string[] GetColumns(this LanguageSourceAsset table)
