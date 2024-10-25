@@ -57,7 +57,7 @@ namespace I2.Loc
                     }
                 }
             }
-            throw new Exception($"Value not found: row:{oldRowname} column:{column}");
+            throw new Exception($"Value not found: sheet: [{sheetName}] row: [{oldRowname}] column: [{column}]");
         }
 
         public static string[] GetRows(this LanguageSourceAsset table, string sheetName = SHEET_NAME)
