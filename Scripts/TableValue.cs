@@ -51,7 +51,7 @@ namespace I2.Loc
                             }
                             catch (Exception e) 
                             {
-                                Debug.LogError($"Can't convert {table.mSource.mTerms[i].Languages[j]} to {typeof(T)}");
+                                throw new Exception($"Can't convert {table.mSource.mTerms[i].Languages[j]} to {typeof(T)}");
                             }
                         }
                     }
