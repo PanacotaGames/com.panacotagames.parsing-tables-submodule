@@ -11,7 +11,7 @@ namespace I2.Loc
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
         private const string SHEET_NAME = "Development";
 #else
-        private const string SHEET_NAME = "Producion";
+        private const string SHEET_NAME = "Production";
 #endif
 
         public static T GetValue<T>(this LanguageSourceAsset table, string row, string column, string sheetName = SHEET_NAME)
