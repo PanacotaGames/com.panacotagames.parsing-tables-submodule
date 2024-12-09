@@ -30,12 +30,7 @@ namespace I2.Loc
                         if (table.mSource.mLanguages[j].Name == column)
                         {
                             try 
-                            {
-                                if (typeof(string) == typeof(T))
-                                {
-                                    return return (T)(object)table.mSource.mTerms[i].Languages[j];
-                                }
-                                
+                            {                                
                                 if (typeof(T) == typeof(int) || typeof(T) == typeof(long) || typeof(T) == typeof(short)) 
                                 {
                                     float result = (float)Convert.ChangeType(table.mSource.mTerms[i].Languages[j], typeof(float), info);
