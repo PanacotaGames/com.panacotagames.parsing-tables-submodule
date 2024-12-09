@@ -33,7 +33,7 @@ namespace I2.Loc
                             {
                                 if (typeof(string) == typeof(T))
                                 {
-                                    return table.mSource.mTerms[i].Languages[j];
+                                    return return (T)(object)table.mSource.mTerms[i].Languages[j];
                                 }
                                 
                                 if (typeof(T) == typeof(int) || typeof(T) == typeof(long) || typeof(T) == typeof(short)) 
