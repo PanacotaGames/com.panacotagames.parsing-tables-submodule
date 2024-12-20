@@ -30,7 +30,13 @@ namespace I2.Loc
                         if (table.mSource.mLanguages[j].Name == column)
                         {
                             try 
-                            {                                
+                            {   
+                                if (typeof(T).IsEnum)
+                                {
+                                    object result = Enum.Parse(typeof(T), table.mSource.mTerms[i].Languages[j]);
+                                    return (T)result;
+                                }
+                                
                                 if (typeof(T) == typeof(int) || typeof(T) == typeof(long) || typeof(T) == typeof(short)) 
                                 {
                                     float result = (float)Convert.ChangeType(table.mSource.mTerms[i].Languages[j], typeof(float), info);
