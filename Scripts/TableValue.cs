@@ -69,12 +69,12 @@ namespace I2.Loc
         public static string[] GetRows(this LanguageSourceAsset table, string sheetName = SHEET_NAME)
         {
             sheetName += "/";
-            return table.mSource.mTerms.Where(x => x.Term == sheetName).Select(x => x.Term.Replace(sheetName, "")).ToArray();
+            return table.mSource.mTerms.Where(x => x.Term.Contains(sheetName)).Select(x => x.Term.Replace(sheetName, "")).ToArray();
         }
         
         public static string[] GetColumns(this LanguageSourceAsset table, string sheetName = SHEET_NAME)
         {
-            return table.mSource.mLanguages.Where(x => x.Name == sheetName).Select(x => x.Name).ToArray();
+            return table.mSource.mLanguages.Where(x => x.Name.Contains(sheetName)).Select(x => x.Name.Replace(sheetName, "")).ToArray();
         }
     }
 }
