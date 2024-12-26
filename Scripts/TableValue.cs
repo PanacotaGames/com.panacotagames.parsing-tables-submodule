@@ -71,10 +71,21 @@ namespace I2.Loc
             sheetName += "/";
             return table.mSource.mTerms.Where(x => x.Term.Contains(sheetName)).Select(x => x.Term.Replace(sheetName, "")).ToArray();
         }
-        
-        public static string[] GetColumns(this LanguageSourceAsset table)
+
+        public static string[] GetColumns(this LanguageSourceAsset table, string sheetName = SHEET_NAME)
         {
-            return table.mSource.mLanguages.Select(x => x.Name).ToArray();
+            if (table.mSource.mDictionary.Count == 0)
+            {
+                table.mSource.UpdateDictionary();
+            }
+            TermData data = table.mSource.mDictionary.First(x => x.Key.Contains(sheetName)).Value;
+            int[] languagueIndexes = data.Languages.Where(x => string.IsNullOrEmpty(x) == false).Select(x => Array.IndexOf(data.Languages, x)).ToArray();
+            List<string> columns = new();
+            foreach (int index in languagueIndexes)
+            {
+                columns.Add(table.mSource.mLanguages[index].Name);
+            }
+            return columns.ToArray();
         }
     }
 }
