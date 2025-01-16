@@ -79,8 +79,25 @@ namespace I2.Loc
             {
                 table.mSource.UpdateDictionary();
             }
+
             TermData data = table.mSource.mDictionary.First(x => x.Key.Contains(sheetName)).Value;
-            int[] languagueIndexes = data.Languages.Where(x => string.IsNullOrEmpty(x) == false).Select(x => Array.IndexOf(data.Languages, x)).Distinct().ToArray();
+            
+            List<int> languagueIndexes = new();
+            foreach (string s in data.Languages.Where(x => string.IsNullOrEmpty(x) == false))
+            {
+                int index = 0;
+                while (index < data.Languages.Count())
+                {
+                    if (languagueIndexes.Contains(index) || data.Languages.ElementAt(index) != s)
+                    {
+                        index++;
+                        continue;
+                    }
+
+                    languagueIndexes.Add(index);
+                    index++;
+                }
+            }
             List<string> columns = new();
             foreach (int index in languagueIndexes)
             {
